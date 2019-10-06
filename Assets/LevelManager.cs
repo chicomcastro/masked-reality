@@ -51,4 +51,8 @@ public class LevelManager : MonoBehaviour
     {
         levels[levelIndex].SetActive(false);
     }
+
+    public Transform GetCurrentLevel() {
+        return levels[currentLevel].transform;
+    }
 }

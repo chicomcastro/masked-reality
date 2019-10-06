@@ -10,6 +10,10 @@ public class ConstructionPlace : MonoBehaviour
 
     public virtual void OnMouseOver()
     {
+        if (haveBuilded && inConstruction == null) {
+            haveBuilded = false;
+        }
+
         if (!isPreviewing && inConstruction == null && !haveBuilded)
         {
             inConstruction = WayCrafter.ShowPreview(transform.position);
@@ -18,15 +22,9 @@ public class ConstructionPlace : MonoBehaviour
 
         if (isPreviewing && !haveBuilded && Input.GetMouseButtonDown(0))
         {
-            print("Construa!");
+            print("Construindo novo bloco!");
             WayCrafter.BuildBlock(transform.position);
             haveBuilded = true;
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            PerformExitActions();
-            Destroy(this.gameObject);
         }
     }
 
@@ -35,11 +33,16 @@ public class ConstructionPlace : MonoBehaviour
         PerformExitActions();
     }
 
-    private void PerformExitActions() {
+    public void PerformExitActions() {
 
         Destroy(inConstruction);
         inConstruction = null;
         if (!haveBuilded)
             isPreviewing = false;
+    }
+
+    private void OnDisable()
+    {
+        PerformExitActions();
     }
 }
