@@ -22,10 +22,21 @@ public class ConstructionPlace : MonoBehaviour
             WayCrafter.BuildBlock(transform.position);
             haveBuilded = true;
         }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            PerformExitActions();
+            Destroy(this.gameObject);
+        }
     }
 
     public virtual void OnMouseExit()
     {
+        PerformExitActions();
+    }
+
+    private void PerformExitActions() {
+
         Destroy(inConstruction);
         inConstruction = null;
         if (!haveBuilded)
