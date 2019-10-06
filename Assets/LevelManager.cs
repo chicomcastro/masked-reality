@@ -17,7 +17,8 @@ public class LevelManager : MonoBehaviour
     }
 
     [ContextMenu("Setup game")]
-    public void SetUpGame() {
+    public void SetUpGame()
+    {
 
         currentLevel = 0;
         foreach (GameObject gamo in levels)
@@ -28,7 +29,8 @@ public class LevelManager : MonoBehaviour
         LoadLevel(currentLevel);
     }
 
-    public void ResetLevel() {
+    public void ResetLevel()
+    {
         ReleaseLevel(currentLevel);
         LoadLevel(currentLevel);
     }
@@ -36,6 +38,8 @@ public class LevelManager : MonoBehaviour
     [ContextMenu("Load new level")]
     public void NextLevel()
     {
+        if (currentLevel >= levels.Length - 1)
+            return;
         ReleaseLevel(currentLevel);
         currentLevel++;
         LoadLevel(currentLevel);
@@ -49,10 +53,12 @@ public class LevelManager : MonoBehaviour
 
     private void ReleaseLevel(int levelIndex)
     {
+        WayCrafter.ClearLevelBuildedBlocks();
         levels[levelIndex].SetActive(false);
     }
 
-    public Transform GetCurrentLevel() {
+    public Transform GetCurrentLevel()
+    {
         return levels[currentLevel].transform;
     }
 }

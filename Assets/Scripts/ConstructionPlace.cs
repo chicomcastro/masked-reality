@@ -12,6 +12,7 @@ public class ConstructionPlace : MonoBehaviour
     {
         if (haveBuilded && inConstruction == null) {
             haveBuilded = false;
+            isPreviewing = false;
         }
 
         if (!isPreviewing && inConstruction == null && !haveBuilded)
@@ -23,7 +24,8 @@ public class ConstructionPlace : MonoBehaviour
         if (isPreviewing && !haveBuilded && Input.GetMouseButtonDown(0))
         {
             print("Construindo novo bloco!");
-            WayCrafter.BuildBlock(transform.position);
+            Destroy(inConstruction);
+            inConstruction = WayCrafter.BuildBlock(transform.position);
             haveBuilded = true;
         }
     }
@@ -33,12 +35,14 @@ public class ConstructionPlace : MonoBehaviour
         PerformExitActions();
     }
 
-    public void PerformExitActions() {
-
-        Destroy(inConstruction);
-        inConstruction = null;
+    public void PerformExitActions()
+    {
         if (!haveBuilded)
+        {
             isPreviewing = false;
+            Destroy(inConstruction);
+            inConstruction = null;
+        }
     }
 
     private void OnDisable()

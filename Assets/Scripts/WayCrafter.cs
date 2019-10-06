@@ -8,6 +8,7 @@ public class WayCrafter : MonoBehaviour
     public GameObject blockPrefab;
     public float previewOpacity = 0.25f;
     private GameObject currentPreview;
+    private static Stack<GameObject> buildedBlocks = new Stack<GameObject>();
 
     public static WayCrafter instance;
 
@@ -37,11 +38,21 @@ public class WayCrafter : MonoBehaviour
         return gamo;
     }
 
-    public static void BuildBlock(Vector3 fundation)
+    public static GameObject BuildBlock(Vector3 fundation)
     {
         GameObject gamo = Instantiate(instance.blockPrefab, fundation + new Vector3(0, 1, 0), Quaternion.identity, LevelManager.instance.GetCurrentLevel());
         gamo.GetComponent<Collider>().enabled = true;
         gamo.AddComponent<Delector>();
+        buildedBlocks.Push(gamo);
+        return gamo;
+    }
+
+    public static void ClearLevelBuildedBlocks() {
+        foreach (GameObject gamo in buildedBlocks)
+        {
+            Destroy(gamo);
+        }
+        buildedBlocks.Clear();
     }
 }
 
