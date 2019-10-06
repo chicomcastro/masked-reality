@@ -33,7 +33,7 @@ public class WayCrafter : MonoBehaviour
     public static GameObject ShowPreview(Vector3 fundation)
     {
         GameObject gamo = Instantiate(instance.blockPrefab, fundation + new Vector3(0, 1, 0), Quaternion.identity);
-        gamo.GetComponent<Renderer>().material.ChangeAlpha(previewOpacity);
+        gamo.GetComponent<Renderer>().material.ChangeAlpha(instance.previewOpacity);
         return gamo;
     }
 
@@ -50,9 +50,7 @@ public static class Materialxtensions
     public static void ChangeAlpha(this Material mat, float alphaValue)
     {
         Color oldColor = mat.color;
-        Debug.Log(oldColor);
         Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, alphaValue);
-        Debug.Log(newColor);
         mat.SetColor("_Color", newColor);
     }
 }
