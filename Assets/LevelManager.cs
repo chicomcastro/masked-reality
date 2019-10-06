@@ -29,7 +29,10 @@ public class LevelManager : MonoBehaviour
                 levels.Add(gameObj);
             }
         }
+
         print("Foram registrados " + levels.Count + " leveis.");
+        levels.Sort((x, y) => x.name.CompareTo(y.name));
+        levels[levels.Count-1].GetComponentInChildren<PortalManager>().portalForceNorm = 0f;
 
         currentLevel = 0;
         foreach (GameObject gamo in levels)

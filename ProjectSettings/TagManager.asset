@@ -8,6 +8,7 @@ TagManager:
   - Portal
   - Spawn
   - Ground
+  - Cannon
   layers:
   - Default
   - TransparentFX

@@ -10,13 +10,20 @@ public class CannonBehaviour : MonoBehaviour
     public float timeRate = 1f;
     public float inicialDelay = 1.0f;
 
-    private void OnEnable()
+    private Stack<GameObject> bullets = new Stack<GameObject>();
+
+    private void Start()
     {
         InvokeRepeating("Fire", inicialDelay, 1 / timeRate);
     }
 
     private void Fire()
     {
-        Instantiate(bullet, bulletSpawn.position, transform.rotation, this.transform);
+        bullets.Push(Instantiate(bullet, bulletSpawn.position, transform.rotation, this.transform));
+    }
+
+    private void OnDisable()
+    {
+        bullets.Clear();
     }
 }

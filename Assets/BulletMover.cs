@@ -24,9 +24,10 @@ public class BulletMover : MonoBehaviour
             print("Have hitted player");
             LifeManager.instance.Die();
         }
-
-        if (other.transform.parent != null && other.transform.parent.tag == "Cannon")
+        else if (other.tag != "Ground")
+        {
             return;
+        }
 
         // Instantiate animation
         Destroy(this.gameObject);
