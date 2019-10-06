@@ -6,11 +6,13 @@ public class WayCrafter : MonoBehaviour
 {
     public Camera camera;
     public GameObject blockPrefab;
+    public float previewOpacity = 0.25f;
     private GameObject currentPreview;
 
     public static WayCrafter instance;
 
-    private void Awake() {
+    private void Awake()
+    {
         instance = this;
     }
 
@@ -30,7 +32,9 @@ public class WayCrafter : MonoBehaviour
 
     public static GameObject ShowPreview(Vector3 fundation)
     {
-        return Instantiate(instance.blockPrefab, fundation + new Vector3(0, 1, 0), Quaternion.identity);
+        GameObject gamo = Instantiate(instance.blockPrefab, fundation + new Vector3(0, 1, 0), Quaternion.identity);
+        gamo.GetComponent<Renderer>().material.ChangeAlpha(previewOpacity);
+        return gamo;
     }
 
     public static void BuildBlock(Vector3 fundation)
@@ -38,5 +42,17 @@ public class WayCrafter : MonoBehaviour
         GameObject gamo = Instantiate(instance.blockPrefab, fundation + new Vector3(0, 1, 0), Quaternion.identity);
         gamo.GetComponent<Collider>().enabled = true;
         gamo.AddComponent<ConstructionPlace>();
+    }
+}
+
+public static class Materialxtensions
+{
+    public static void ChangeAlpha(this Material mat, float alphaValue)
+    {
+        Color oldColor = mat.color;
+        Debug.Log(oldColor);
+        Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, alphaValue);
+        Debug.Log(newColor);
+        mat.SetColor("_Color", newColor);
     }
 }
