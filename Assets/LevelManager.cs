@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void ResetLevel() {
+        ReleaseLevel(currentLevel);
         LoadLevel(currentLevel);
     }
 
