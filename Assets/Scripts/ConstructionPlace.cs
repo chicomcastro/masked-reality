@@ -10,7 +10,8 @@ public class ConstructionPlace : MonoBehaviour
 
     public virtual void OnMouseOver()
     {
-        if (haveBuilded && inConstruction == null) {
+        if (haveBuilded && inConstruction == null)
+        {
             haveBuilded = false;
             isPreviewing = false;
         }
