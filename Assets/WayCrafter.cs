@@ -28,11 +28,6 @@ public class WayCrafter : MonoBehaviour
         }
     }
 
-    void BuildBlock()
-    {
-
-    }
-
     public static GameObject ShowPreview(Vector3 fundation)
     {
         return Instantiate(instance.blockPrefab, fundation + new Vector3(0, 1, 0), Quaternion.identity);
