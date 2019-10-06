@@ -33,6 +33,7 @@ public class LevelManager : MonoBehaviour
     {
         ReleaseLevel(currentLevel);
         LoadLevel(currentLevel);
+        LifeManager.instance.ShowPlayer();
     }
 
     [ContextMenu("Load new level")]

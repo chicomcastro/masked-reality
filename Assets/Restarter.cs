@@ -9,7 +9,7 @@ public class Restarter : MonoBehaviour
         if (other.tag == "Player")
         {
             print("Player have fallen");
-            LevelManager.instance.ResetLevel();
+            LifeManager.instance.Die();
         }
     }
 }
