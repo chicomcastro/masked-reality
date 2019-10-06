@@ -5,21 +5,30 @@ using UnityEngine;
 public class ConstructionPlace : MonoBehaviour
 {
     private bool isPreviewing = false;
+    private bool haveBuilded = false;
     private GameObject inConstruction = null;
 
-    private void OnMouseOver()
+    public virtual void OnMouseOver()
     {
-        if (!isPreviewing && inConstruction == null)
+        if (!isPreviewing && inConstruction == null && !haveBuilded)
         {
             inConstruction = WayCrafter.ShowPreview(transform.position);
             isPreviewing = true;
         }
+
+        if (isPreviewing && !haveBuilded && Input.GetMouseButtonDown(0))
+        {
+            print("Construa!");
+            WayCrafter.BuildBlock(transform.position);
+            haveBuilded = true;
+        }
     }
 
-    private void OnMouseExit()
+    public virtual void OnMouseExit()
     {
         Destroy(inConstruction);
         inConstruction = null;
-        isPreviewing = false;
+        if (!haveBuilded)
+            isPreviewing = false;
     }
 }
