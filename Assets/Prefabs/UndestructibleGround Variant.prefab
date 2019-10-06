@@ -1,6 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5487228920396999973
+--- !u!114 &5478560045048757146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6347107967218911247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0230907dfb7f4424ea09f7a6efd82194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &2463631398373422533
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,12 +22,7 @@ PrefabInstance:
     - target: {fileID: 8801694644932541898, guid: 20c711db0ad5f754e96a64409ce6f059,
         type: 3}
       propertyPath: m_Name
-      value: ConstructionBlock Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 8801694644932541898, guid: 20c711db0ad5f754e96a64409ce6f059,
-        type: 3}
-      propertyPath: m_TagString
-      value: Ground
+      value: UndestructibleGround Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6245727201897836929, guid: 20c711db0ad5f754e96a64409ce6f059,
         type: 3}
@@ -76,13 +83,18 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 76ff537c8e1a84345868e6aeee938ab3, type: 2}
-    - target: {fileID: 3808868465891829097, guid: 20c711db0ad5f754e96a64409ce6f059,
+      objectReference: {fileID: 2100000, guid: 01c04496878436140922b19f5220712b, type: 2}
+    - target: {fileID: 5241106607661142986, guid: 20c711db0ad5f754e96a64409ce6f059,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 8325752552190999409, guid: 20c711db0ad5f754e96a64409ce6f059, type: 3}
     - {fileID: 5241106607661142986, guid: 20c711db0ad5f754e96a64409ce6f059, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 20c711db0ad5f754e96a64409ce6f059, type: 3}
+--- !u!1 &6347107967218911247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8801694644932541898, guid: 20c711db0ad5f754e96a64409ce6f059,
+    type: 3}
+  m_PrefabInstance: {fileID: 2463631398373422533}
+  m_PrefabAsset: {fileID: 0}

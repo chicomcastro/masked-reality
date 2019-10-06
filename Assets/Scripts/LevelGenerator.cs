@@ -46,4 +46,28 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
+
+
+    [ContextMenu("Print selected objects quant")]
+    public void GetSelectedObjectsQuant()
+    {
+        print(UnityEditor.Selection.gameObjects.Length);
+    }
+
+
+    public GameObject objToReplace;
+    [ContextMenu("Replace selected objects")]
+    public void ReplaceSelectedObjects()
+    {
+        if (objToReplace == null)
+            return;
+
+        foreach (GameObject gamo in UnityEditor.Selection.gameObjects)
+        {
+            if (gamo.name == this.gameObject.name)
+                return;
+            Instantiate(objToReplace, gamo.transform.position, gamo.transform.rotation, gamo.transform.parent);
+            DestroyImmediate(gamo);
+        }
+    }
 }
