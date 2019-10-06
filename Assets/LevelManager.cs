@@ -72,7 +72,7 @@ public class LevelManager : MonoBehaviour
         levels[levelIndex].SetActive(false);
     }
 
-    public Transform GetCurrentLevel()
+    public Transform GetCurrentLevelObject()
     {
         return levels[currentLevel].transform;
     }

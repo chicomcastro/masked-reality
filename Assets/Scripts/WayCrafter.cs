@@ -40,7 +40,7 @@ public class WayCrafter : MonoBehaviour
 
     public static GameObject BuildBlock(Vector3 fundation)
     {
-        GameObject gamo = Instantiate(instance.blockPrefab, fundation + new Vector3(0, 1, 0), Quaternion.identity, LevelManager.instance.GetCurrentLevel());
+        GameObject gamo = Instantiate(instance.blockPrefab, fundation + new Vector3(0, 1, 0), Quaternion.identity, LevelManager.instance.GetCurrentLevelObject());
         gamo.GetComponent<Collider>().enabled = true;
         gamo.AddComponent<Delector>();
         buildedBlocks.Push(gamo);
