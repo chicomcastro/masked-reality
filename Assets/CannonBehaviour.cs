@@ -10,11 +10,13 @@ public class CannonBehaviour : MonoBehaviour
     public float timeRate = 1f;
     public float inicialDelay = 1.0f;
 
-    private void Start() {
-        InvokeRepeating("Fire", inicialDelay, 1/timeRate);
+    private void OnEnable()
+    {
+        InvokeRepeating("Fire", inicialDelay, 1 / timeRate);
     }
 
-    private void Fire() {
+    private void Fire()
+    {
         Instantiate(bullet, bulletSpawn.position, transform.rotation, this.transform);
     }
 }

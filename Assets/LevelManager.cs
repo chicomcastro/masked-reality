@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public GameObject[] levels;
+    public List<GameObject> levels;
 
     private int currentLevel;
     public static LevelManager instance;
@@ -19,6 +19,17 @@ public class LevelManager : MonoBehaviour
     [ContextMenu("Setup game")]
     public void SetUpGame()
     {
+        levels = new List<GameObject>();
+
+        string objName = "Level";
+        foreach (var gameObj in FindObjectsOfType(typeof(GameObject)) as GameObject[])
+        {
+            if (gameObj.name.Contains(objName))
+            {
+                levels.Add(gameObj);
+            }
+        }
+        print("Foram registrados " + levels.Count + " leveis.");
 
         currentLevel = 0;
         foreach (GameObject gamo in levels)
@@ -39,7 +50,7 @@ public class LevelManager : MonoBehaviour
     [ContextMenu("Load new level")]
     public void NextLevel()
     {
-        if (currentLevel >= levels.Length - 1)
+        if (currentLevel >= levels.Count - 1)
             return;
         ReleaseLevel(currentLevel);
         currentLevel++;

@@ -6,11 +6,10 @@ public class LifeManager : MonoBehaviour
 {
     public static LifeManager instance;
 
-    private GameObject player;
+    public GameObject player;
 
     private void Awake() {
         instance = this;
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void HidePlayer() {

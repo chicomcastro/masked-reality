@@ -7,7 +7,8 @@ public class BulletMover : MonoBehaviour
     public float speed = 5f;
     public float lifeTime = 10.0f;
 
-    private void Start() {
+    private void Start()
+    {
         Destroy(this.gameObject, lifeTime);
     }
 
@@ -18,10 +19,21 @@ public class BulletMover : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player") {
+        if (other.tag == "Player")
+        {
             print("Have hitted player");
-            Destroy(this.gameObject);
             LifeManager.instance.Die();
         }
+
+        if (other.transform.parent != null && other.transform.parent.tag == "Cannon")
+            return;
+
+        // Instantiate animation
+        Destroy(this.gameObject);
+    }
+
+    private void OnDisable()
+    {
+        Destroy(this.gameObject);
     }
 }
