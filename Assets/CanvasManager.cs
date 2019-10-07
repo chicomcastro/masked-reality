@@ -25,14 +25,18 @@ public class CanvasManager : MonoBehaviour
 
     public void SetBlockText(int newBlockQuant)
     {
+
+        blocksCountText.text = newBlockQuant != 0 ? (newBlockQuant).ToString() : "NOTHING!";
+
+        if (newBlockQuant == 0)
+            return;
+
         int result = 0;
         int.TryParse(blocksCountText.text, out result);
         if (newBlockQuant > result)
             canvasAnim.Play("IncreaseBlock");
-        else
+        else if (newBlockQuant < result)
             canvasAnim.Play("DecreaseBlock");
-
-        blocksCountText.text = newBlockQuant != 0 ? (newBlockQuant).ToString() : "NOTHING!";
     }
 
     public void DeactiveMenu()
@@ -50,13 +54,5 @@ public class CanvasManager : MonoBehaviour
     public void StartTutorial()
     {
         canvasAnim.Play("TutorialTip");
-    }
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(1) && LevelManager.instance.GetCurrentLevel() == 0)
-        {
-            DeactivateTutorial();
-        }
     }
 }

@@ -24,6 +24,11 @@ public class Delector : ConstructionPlace
                 gamo.GetComponent<Renderer>().enabled = false;
             }
 
+            if (LevelManager.instance.GetCurrentLevel() == 0)
+            {
+                CanvasManager.instance.DeactivateTutorial();
+            }
+
             InventoryManager.instance.AddBlock();
             AnimationManager.instance.SpawnConstructionEffectIn(this.gameObject);
             Destroy(this.gameObject);
