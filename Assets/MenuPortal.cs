@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class MenuPortal : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other) {
-        CanvasManager.instance.DeactiveMenu();
-        LevelManager.instance.NextLevel();
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            CanvasManager.instance.DeactivateTutorial();
+        }
     }
 }

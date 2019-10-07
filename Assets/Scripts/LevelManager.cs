@@ -17,8 +17,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        //TODO
-        menu.SetActive(false);
+        menu.SetActive(true);
         SetUpGame();
     }
 
@@ -64,7 +63,7 @@ public class LevelManager : MonoBehaviour
         ReleaseLevel(currentLevel);
         currentLevel++;
         LoadLevel(currentLevel);
-        print("Level is now: " + currentLevel);
+        print("Level is now: " + (currentLevel + 1).ToString());
     }
 
     private void LoadLevel(int levelIndex)
@@ -82,5 +81,10 @@ public class LevelManager : MonoBehaviour
     public Transform GetCurrentLevelObject()
     {
         return levels[currentLevel].transform;
+    }
+
+    public int GetCurrentLevel()
+    {
+        return currentLevel;
     }
 }

@@ -8,19 +8,34 @@ public class LifeManager : MonoBehaviour
 
     public GameObject player;
 
-    private void Awake() {
+    private void Awake()
+    {
         instance = this;
+        BlockPlayer();
     }
 
-    public void HidePlayer() {
+    public void BlockPlayer()
+    {
+        LifeManager.instance.GetPlayerReference().GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().enabled = false;
+    }
+
+    public void FreePlayer()
+    {
+        LifeManager.instance.GetPlayerReference().GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().enabled = true;
+    }
+
+    public void HidePlayer()
+    {
         player.SetActive(false);
     }
 
-    public void ShowPlayer() {
+    public void ShowPlayer()
+    {
         player.SetActive(true);
     }
 
-    public GameObject GetPlayerReference() {
+    public GameObject GetPlayerReference()
+    {
         return player;
     }
 
