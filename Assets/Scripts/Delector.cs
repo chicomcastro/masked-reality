@@ -24,8 +24,9 @@ public class Delector : ConstructionPlace
                 gamo.GetComponent<Renderer>().enabled = false;
             }
 
-            Destroy(this.gameObject);
             InventoryManager.instance.AddBlock();
+            AnimationManager.instance.SpawnConstructionEffectIn(this.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

@@ -46,8 +46,7 @@ public class LifeManager : MonoBehaviour
 
     private IEnumerator DeathSequence()
     {
-        // Play "animatio" (particle system)
-        // Desactive player rendering
+        AnimationManager.instance.SpawnHitEffectIn(player.gameObject);
         player.SetActive(false);
         yield return new WaitForSeconds(1.0f);
         LevelManager.instance.ResetLevel();

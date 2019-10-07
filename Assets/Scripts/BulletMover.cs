@@ -31,6 +31,7 @@ public class BulletMover : MonoBehaviour
 
         // Instantiate animation
         Destroy(this.gameObject);
+        AnimationManager.instance.SpawnHitEffectIn(this.gameObject);
     }
 
     private void OnDisable()
