@@ -11,6 +11,7 @@ public class CanvasManager : MonoBehaviour
     public GameObject inventoryPanel;
     public GameObject pressButtonText;
     public GameObject tutorialText;
+    public GameObject restartButton;
     public Animator canvasAnim;
 
     private void Awake()
@@ -25,23 +26,23 @@ public class CanvasManager : MonoBehaviour
 
     public void SetBlockText(int newBlockQuant)
     {
-
-        blocksCountText.text = newBlockQuant != 0 ? (newBlockQuant).ToString() : "NOTHING!";
-
-        if (newBlockQuant == 0)
-            return;
-
         int result = 0;
         int.TryParse(blocksCountText.text, out result);
+        blocksCountText.text = newBlockQuant != 0 ? (newBlockQuant).ToString() : "NOTHING!";
+
+        if (!LifeManager.instance.PlayerIsFree())
+            return;
+
         if (newBlockQuant > result)
             canvasAnim.Play("IncreaseBlock");
-        else if (newBlockQuant < result)
+        else
             canvasAnim.Play("DecreaseBlock");
     }
 
     public void DeactiveMenu()
     {
         inventoryPanel.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
         titleText.gameObject.SetActive(false);
         pressButtonText.gameObject.SetActive(false);
     }
@@ -54,5 +55,10 @@ public class CanvasManager : MonoBehaviour
     public void StartTutorial()
     {
         canvasAnim.Play("TutorialTip");
+    }
+
+    public void PlayEndAnimation() {
+        LifeManager.instance.BlockPlayer();
+        canvasAnim.Play("EndAnimation");
     }
 }

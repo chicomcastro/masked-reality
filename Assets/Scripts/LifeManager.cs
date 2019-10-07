@@ -24,6 +24,10 @@ public class LifeManager : MonoBehaviour
         LifeManager.instance.GetPlayerReference().GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().enabled = true;
     }
 
+    public bool PlayerIsFree() {
+        return LifeManager.instance.GetPlayerReference().GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().enabled;
+    }
+
     public void HidePlayer()
     {
         player.SetActive(false);

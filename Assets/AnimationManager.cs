@@ -45,4 +45,8 @@ public class AnimationManager : MonoBehaviour
         GameObject gamo = Instantiate(constructionEffect, spawner.transform.position, spawner.transform.rotation);
         Destroy(gamo, 2.0f);
     }
+
+    public void PlayEndAnimation() {
+        CanvasManager.instance.PlayEndAnimation();
+    }
 }

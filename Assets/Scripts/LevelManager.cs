@@ -38,6 +38,7 @@ public class LevelManager : MonoBehaviour
         print("Foram registrados " + levels.Count + " leveis.");
         levels.Sort((x, y) => x.name.CompareTo(y.name));
         levels[levels.Count - 1].GetComponentInChildren<PortalManager>().portalForceNorm = 0f;
+        levels[levels.Count - 1].GetComponentInChildren<PortalManager>().gameObject.AddComponent<LastPortal>();
 
         currentLevel = 0;
         foreach (GameObject gamo in levels)
