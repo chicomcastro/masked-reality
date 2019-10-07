@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public List<GameObject> levels;
+    public GameObject menu;
 
     private int currentLevel;
     public static LevelManager instance;
@@ -12,7 +13,12 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
 
+    private void Start()
+    {
+        //TODO
+        menu.SetActive(false);
         SetUpGame();
     }
 
@@ -63,6 +69,7 @@ public class LevelManager : MonoBehaviour
 
     private void LoadLevel(int levelIndex)
     {
+        InventoryManager.instance.ResetBlockCount();
         levels[levelIndex].SetActive(true);
     }
 

@@ -22,7 +22,7 @@ public class ConstructionPlace : MonoBehaviour
             isPreviewing = true;
         }
 
-        if (isPreviewing && !haveBuilded && Input.GetMouseButtonDown(0))
+        if (isPreviewing && !haveBuilded && Input.GetMouseButtonDown(0) && InventoryManager.instance.HaveBlock())
         {
             print("Construindo novo bloco!");
             Destroy(inConstruction);

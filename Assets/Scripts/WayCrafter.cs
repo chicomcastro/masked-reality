@@ -47,7 +47,8 @@ public class WayCrafter : MonoBehaviour
         return gamo;
     }
 
-    public static void ClearLevelBuildedBlocks() {
+    public static void ClearLevelBuildedBlocks()
+    {
         foreach (GameObject gamo in buildedBlocks)
         {
             Destroy(gamo);
