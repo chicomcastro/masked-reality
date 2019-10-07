@@ -9,6 +9,7 @@ TagManager:
   - Spawn
   - Ground
   - Cannon
+  - ConstructionBlock
   layers:
   - Default
   - TransparentFX

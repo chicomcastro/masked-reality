@@ -17,6 +17,7 @@ public class InventoryManager : MonoBehaviour
     public void AddBlock()
     {
         blocksCount += 1;
+        CanvasManager.instance.SetBlockText(blocksCount);
     }
 
     public void UseBlock()
@@ -27,6 +28,7 @@ public class InventoryManager : MonoBehaviour
             return;
         }
         blocksCount -= 1;
+        CanvasManager.instance.SetBlockText(blocksCount);
     }
 
     public bool HaveBlock()
@@ -37,11 +39,17 @@ public class InventoryManager : MonoBehaviour
     public void ResetBlockCount()
     {
         blocksCount = 0;
+        CanvasManager.instance.SetBlockText(0);
     }
 
     [ContextMenu("Set debug mode")]
     public void SetDebugMode()
     {
         blocksCount = int.MaxValue;
+        CanvasManager.instance.SetBlockText(blocksCount);
+    }
+
+    public int GetBlockCount() {
+        return blocksCount;
     }
 }
