@@ -12,6 +12,7 @@ public class CanvasManager : MonoBehaviour
     public GameObject pressButtonText;
     public GameObject tutorialText;
     public Animator canvasAnim;
+
     private void Awake()
     {
         instance = this;
@@ -22,27 +23,39 @@ public class CanvasManager : MonoBehaviour
         inventoryPanel.gameObject.SetActive(false);
     }
 
-    public void SetBlockText(int newBlockQuant) {
+    public void SetBlockText(int newBlockQuant)
+    {
+        int result = 0;
+        int.TryParse(blocksCountText.text, out result);
+        if (newBlockQuant > result)
+            canvasAnim.Play("IncreaseBlock");
+        else
+            canvasAnim.Play("DecreaseBlock");
+
         blocksCountText.text = newBlockQuant != 0 ? (newBlockQuant).ToString() : "NOTHING!";
     }
 
-    public void DeactiveMenu() {
+    public void DeactiveMenu()
+    {
         inventoryPanel.gameObject.SetActive(true);
         titleText.gameObject.SetActive(false);
         pressButtonText.gameObject.SetActive(false);
     }
 
-    public void DeactivateTutorial() {
+    public void DeactivateTutorial()
+    {
         tutorialText.gameObject.SetActive(false);
     }
 
-    public void StartTutorial() {
+    public void StartTutorial()
+    {
         canvasAnim.Play("TutorialTip");
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1) && LevelManager.instance.GetCurrentLevel() == 0) {
+        if (Input.GetMouseButtonDown(1) && LevelManager.instance.GetCurrentLevel() == 0)
+        {
             DeactivateTutorial();
         }
     }
