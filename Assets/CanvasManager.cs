@@ -57,8 +57,8 @@ public class CanvasManager : MonoBehaviour
         canvasAnim.Play("TutorialTip");
     }
 
-    public void PlayEndAnimation() {
-        LifeManager.instance.BlockPlayer();
+    public void PlayEndAnimation()
+    {
         canvasAnim.Play("EndAnimation");
     }
 }
