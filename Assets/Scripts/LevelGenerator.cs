@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,8 +14,25 @@ public class LevelGenerator : MonoBehaviour
     public GameObject cubePrefab;
     public float instantiatedAlpha = 1.0f;
 
+    [ContextMenu("Generate blocks")]
+    void GenerateBlocks()
+    {
+        GameObject gamo = new GameObject();
+        gamo.name = "newLevel";
+        foreach (Vector3 c in coordinates)
+        {
+            for (int i = 0; i < tableNumber; i++)
+            {
+                for (int j = 0; j < tableNumber; j++)
+                {
+                    GameObject _ = Instantiate(cubePrefab, c + new Vector3(i, 0, j), Quaternion.identity, gamo.transform);
+                }
+            }
+        }
+    }
+
     [ContextMenu("Generate base blocks")]
-    void GenerateLevel()
+    void GenerateBase()
     {
         GameObject gamo = new GameObject();
         gamo.name = "newLevel";
