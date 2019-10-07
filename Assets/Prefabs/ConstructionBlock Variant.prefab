@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 8801694644932541898, guid: 20c711db0ad5f754e96a64409ce6f059,
         type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: ConstructionBlock
       objectReference: {fileID: 0}
     - target: {fileID: 6245727201897836929, guid: 20c711db0ad5f754e96a64409ce6f059,
         type: 3}

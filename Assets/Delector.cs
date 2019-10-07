@@ -16,10 +16,16 @@ public class Delector : ConstructionPlace
         if (Input.GetMouseButtonDown(1))
         {
             PerformExitActions();
-            GameObject gamo = Instantiate(this.gameObject, transform.position, transform.rotation, transform.parent);
-            gamo.GetComponent<Collider>().enabled = false;
-            gamo.GetComponent<Renderer>().enabled = false;
+
+            if (this.gameObject.tag == "Ground")
+            {
+                GameObject gamo = Instantiate(this.gameObject, transform.position, transform.rotation, transform.parent);
+                gamo.GetComponent<Collider>().enabled = false;
+                gamo.GetComponent<Renderer>().enabled = false;
+            }
+
             Destroy(this.gameObject);
+            InventoryManager.instance.AddBlock();
         }
     }
 }

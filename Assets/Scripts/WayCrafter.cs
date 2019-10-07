@@ -7,6 +7,7 @@ public class WayCrafter : MonoBehaviour
     public Camera camera;
     public GameObject blockPrefab;
     public float previewOpacity = 0.25f;
+    public Material previewMat;
     private GameObject currentPreview;
     private static Stack<GameObject> buildedBlocks = new Stack<GameObject>();
 
@@ -34,6 +35,7 @@ public class WayCrafter : MonoBehaviour
     public static GameObject ShowPreview(Vector3 fundation)
     {
         GameObject gamo = Instantiate(instance.blockPrefab, fundation + new Vector3(0, 1, 0), Quaternion.identity);
+        gamo.GetComponent<Renderer>().material = instance.previewMat;
         gamo.GetComponent<Renderer>().material.ChangeAlpha(instance.previewOpacity);
         return gamo;
     }
@@ -44,6 +46,7 @@ public class WayCrafter : MonoBehaviour
         gamo.GetComponent<Collider>().enabled = true;
         gamo.AddComponent<Delector>();
         buildedBlocks.Push(gamo);
+        InventoryManager.instance.UseBlock();
         return gamo;
     }
 

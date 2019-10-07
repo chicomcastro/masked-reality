@@ -24,7 +24,7 @@ public class BulletMover : MonoBehaviour
             print("Have hitted player");
             LifeManager.instance.Die();
         }
-        else if (other.tag != "Ground")
+        else if (other.tag != "ConstructionBlock")
         {
             return;
         }

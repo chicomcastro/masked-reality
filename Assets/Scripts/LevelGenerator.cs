@@ -35,7 +35,7 @@ public class LevelGenerator : MonoBehaviour
     void GenerateBase()
     {
         GameObject gamo = new GameObject();
-        gamo.name = "newLevel";
+        gamo.name = "BaseBlocks";
         foreach (Vector3 c in coordinates)
         {
             for (int i = 0; i < tableNumber; i++)
@@ -47,6 +47,7 @@ public class LevelGenerator : MonoBehaviour
                     _.GetComponent<Collider>().isTrigger = true;
                     DestroyImmediate(_.GetComponent<Delector>());
                     _.AddComponent<ConstructionPlace>();
+                    _.name = "BaseBlock";
                 }
             }
         }
