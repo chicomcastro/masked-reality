@@ -5,13 +5,15 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class LevelGenerator : MonoBehaviour
 {
+
+    [Header("Scenario creation")]
     public Vector3[] coordinates;
     public float tableNumber = 5;
 
     public GameObject cubePrefab;
     public float instantiatedAlpha = 1.0f;
 
-    [ContextMenu("Generate")]
+    [ContextMenu("Generate base blocks")]
     void GenerateLevel()
     {
         GameObject gamo = new GameObject();
@@ -54,7 +56,7 @@ public class LevelGenerator : MonoBehaviour
         print(UnityEditor.Selection.gameObjects.Length);
     }
 
-
+    [Header("Object replacer")]
     public GameObject objToReplace;
     [ContextMenu("Replace selected objects")]
     public void ReplaceSelectedObjects()
