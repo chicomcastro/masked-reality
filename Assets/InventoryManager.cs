@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,11 +29,19 @@ public class InventoryManager : MonoBehaviour
         blocksCount -= 1;
     }
 
-    public bool HaveBlock() {
+    public bool HaveBlock()
+    {
         return blocksCount > 0;
     }
 
-    public void ResetBlockCount() {
+    public void ResetBlockCount()
+    {
         blocksCount = 0;
+    }
+
+    [ContextMenu("Set debug mode")]
+    public void SetDebugMode()
+    {
+        blocksCount = int.MaxValue;
     }
 }
