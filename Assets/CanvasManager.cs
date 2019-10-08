@@ -23,7 +23,7 @@ public class CanvasManager : MonoBehaviour
     private void Start()
     {
         inventoryPanel.gameObject.SetActive(false);
-        restartButton.gameObject.SetActive(false);print(restartButton.activeInHierarchy);
+        restartButton.gameObject.SetActive(false);
     }
 
     public void SetBlockText(int newBlockQuant)
