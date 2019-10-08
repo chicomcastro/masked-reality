@@ -10,14 +10,14 @@ This game is about this. There are 15 one-screen challenges to prove yourself an
 
 I'm open to criticism, thank's for playing!
 
-# Controls
+## Controls
 WASD to move + mouse (left and right) to build/destroy blocks
 
-# Source code
+## Source code
 There's all on my GitHub, fell free to check it out!
 
-# Assets
+## Assets
 It's all made by me, except for font (credits for Raymond Larabie) and player controller (not yet!!)
 
-# Looking ahead
+## Looking ahead
 Why not a multiplayer and big scenarious with lots of puzzles each one? Let me know if you think it deserves it!
