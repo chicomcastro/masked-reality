@@ -49,4 +49,14 @@ public class AnimationManager : MonoBehaviour
     public void PlayEndAnimation() {
         CanvasManager.instance.PlayEndAnimation();
     }
+
+    public void PlayIncreaseBlockAnimation()
+    {
+        CanvasManager.instance.PlayIncreaseBlockAnimation();
+    }
+
+    public void PlayDecreaseBlockAnimation()
+    {
+        CanvasManager.instance.PlayDecreaseBlockAnimation();
+    }
 }

@@ -37,8 +37,16 @@ public class LevelManager : MonoBehaviour
 
         print("Foram registrados " + levels.Count + " leveis.");
         levels.Sort((x, y) => x.name.CompareTo(y.name));
-        levels[levels.Count - 1].GetComponentInChildren<PortalManager>().portalForceNorm = 0f;
-        levels[levels.Count - 1].GetComponentInChildren<PortalManager>().gameObject.AddComponent<LastPortal>();
+        
+        if (levels[levels.Count - 1].GetComponentInChildren<PortalManager>() == null)
+        {
+            UnityEngine.Debug.LogWarning("Não há PortalManager no último level. Venha aqui ver.");
+        }
+        else
+        {
+            levels[levels.Count - 1].GetComponentInChildren<PortalManager>().portalForceNorm = 0f;
+            levels[levels.Count - 1].GetComponentInChildren<PortalManager>().gameObject.AddComponent<LastPortal>();
+        }
 
         currentLevel = 0;
         foreach (GameObject gamo in levels)
@@ -70,6 +78,7 @@ public class LevelManager : MonoBehaviour
     private void LoadLevel(int levelIndex)
     {
         InventoryManager.instance.ResetBlockCount();
+        CanvasManager.instance.UpdateLevelText(levelIndex);
         levels[levelIndex].SetActive(true);
     }
 

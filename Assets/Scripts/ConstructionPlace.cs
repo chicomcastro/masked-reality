@@ -22,12 +22,16 @@ public class ConstructionPlace : MonoBehaviour
             isPreviewing = true;
         }
 
-        if (isPreviewing && !haveBuilded && Input.GetMouseButtonDown(0) && InventoryManager.instance.HaveBlock())
+        if (isPreviewing && !haveBuilded && Input.GetMouseButtonDown(0))
         {
-            print("Construindo novo bloco!");
-            Destroy(inConstruction);
-            inConstruction = WayCrafter.BuildBlock(transform.position);
-            haveBuilded = true;
+            AnimationManager.instance.PlayDecreaseBlockAnimation();
+            if (InventoryManager.instance.HaveBlock())
+            {
+                print("Construindo novo bloco!");
+                Destroy(inConstruction);
+                inConstruction = WayCrafter.BuildBlock(transform.position);
+                haveBuilded = true;
+            }
         }
     }
 

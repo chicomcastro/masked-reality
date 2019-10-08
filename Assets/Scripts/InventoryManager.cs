@@ -18,6 +18,7 @@ public class InventoryManager : MonoBehaviour
     {
         blocksCount += 1;
         CanvasManager.instance.SetBlockText(blocksCount);
+        AnimationManager.instance.PlayIncreaseBlockAnimation();
     }
 
     public void UseBlock()

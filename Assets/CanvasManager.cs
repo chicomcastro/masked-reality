@@ -8,6 +8,7 @@ public class CanvasManager : MonoBehaviour
     public static CanvasManager instance;
     public Text blocksCountText;
     public Text titleText;
+    public Text levelText;
     public GameObject inventoryPanel;
     public GameObject pressButtonText;
     public GameObject tutorialText;
@@ -22,6 +23,7 @@ public class CanvasManager : MonoBehaviour
     private void Start()
     {
         inventoryPanel.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);print(restartButton.activeInHierarchy);
     }
 
     public void SetBlockText(int newBlockQuant)
@@ -30,13 +32,23 @@ public class CanvasManager : MonoBehaviour
         int.TryParse(blocksCountText.text, out result);
         blocksCountText.text = newBlockQuant != 0 ? (newBlockQuant).ToString() : "NOTHING!";
 
-        if (!LifeManager.instance.PlayerIsFree())
-            return;
+        // if (!LifeManager.instance.PlayerIsFree())
+        //     return;
 
-        if (newBlockQuant > result)
-            canvasAnim.Play("IncreaseBlock");
-        else
-            canvasAnim.Play("DecreaseBlock");
+        // if (newBlockQuant > result)
+        //     canvasAnim.Play("IncreaseBlock");
+        // else
+        //     canvasAnim.Play("DecreaseBlock");
+    }
+
+    public void PlayIncreaseBlockAnimation()
+    {
+        canvasAnim.Play("IncreaseBlock");
+    }
+
+    public void PlayDecreaseBlockAnimation()
+    {
+        canvasAnim.Play("DecreaseBlock");
     }
 
     public void DeactiveMenu()
@@ -59,7 +71,12 @@ public class CanvasManager : MonoBehaviour
 
     public void PlayEndAnimation()
     {
+        restartButton.gameObject.SetActive(false);
         LifeManager.instance.BlockPlayer();
         canvasAnim.Play("EndAnimation");
+    }
+
+    public void UpdateLevelText(int levelIndex){
+        levelText.text = levelIndex == 0 ? "TUTORIAL" : "Level " + (levelIndex).ToString();
     }
 }
