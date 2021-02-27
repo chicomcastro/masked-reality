@@ -1,11 +1,6 @@
-# Blockless
+# Masked reality
 
-Have you ever been forced to destroy and rebuild yourself to adapt to a challenging situation?
-
-Have you ever has to think out of the box to see around?
-
-This game is about this. There are 15 one-screen challenges to prove yourself and this concept. Try to build your way starting with nothing. Hope you enjoy it and have fun!
-
+(in construction...)
 
 
 I'm open to criticism, thank's for playing!
